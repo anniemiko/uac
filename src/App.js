@@ -5,21 +5,22 @@ import {
   Route
 } from 'react-router-dom';
 
-import logo from './BMW-logo-small.png';
 import './App.css';
+import Header from './Header';
+import Application from './Application';
+import Users from './Users';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>User Management System</h2>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Route exact path="/" component={Application}/>
+          <Route path="/application" component={Application}/>
+          <Route path="/users" component={Users}/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      </BrowserRouter>
     );
   }
 }
