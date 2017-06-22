@@ -1,9 +1,19 @@
+/*Bootstrap Variables*/
+$icon-font-path: '../node_modules/bootstrap/fonts';
+
+/*Import Bootstrap*/
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  background-color: orange;
+}
+
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  /*animation: App-logo-spin infinite 20s linear;*/
+img.App-logo {
   height: 80px;
 }
 
@@ -16,9 +26,4 @@
 
 .App-intro {
   font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

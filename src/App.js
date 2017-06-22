@@ -10,6 +10,8 @@ import Header from './Header';
 import Application from './Application';
 import Users from './Users';
 
+// var $ = require('jquery');
+
 class App extends Component {
   render() {
     return (
