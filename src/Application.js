@@ -30,31 +30,30 @@ class ApplicationContainer extends Component {
 }
 
 class Application extends Component {
-  // constructor(props){
-  //   super(props)
-  //   this.state = {
-  //     applications: []
-  //   }
-  // }
-  componentWillReceiveProps(){
-    console.log('props', this.props.applications);
-  }
   render(props){
     var appList = this.props.applications.map((application) => {
       console.log('applications', application)
       return (
-        <li className="application" key={application.Id} >
-          <h4>{application.ApplicationName}</h4>
-          <h4>{application.ApplicationDesc}</h4>
-        </li>
+        <tr className="application" key={application.Id} >
+          <td>{application.ApplicationName}</td>
+          <td>{application.ApplicationDesc}</td>
+        </tr>
       )
     });
     return(
       <div className="main-content">
-        <h2>Applications</h2>
-        <ul className="group">
-          {appList}
-        </ul>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Application Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {appList}
+          </tbody>
+        </table>
+
       </div>
     )
   }

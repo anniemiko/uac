@@ -8,6 +8,9 @@ body {
   background-color: orange;
 }
 
+li {
+  list-style-type: none;
+}
 
 .App {
   text-align: center;
@@ -26,4 +29,21 @@ img.App-logo {
 
 .App-intro {
   font-size: large;
+}
+
+.main-nav li {
+  background-color: #404040;
+}
+
+.main-nav li a{
+  color: white;
+  font-size: 25px;
+}
+
+.active {
+  background-color: #1C53BF;
+}
+
+table {
+  text-align: center;
 }

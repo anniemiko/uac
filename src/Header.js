@@ -11,8 +11,8 @@ const Header = () => (
       <h2>User Management System</h2>
     </div>
     <ul className="main-nav">
-      <li><NavLink to="/application">Application</NavLink></li>
-      <li><NavLink to="/users">Users</NavLink></li>
+      <li className="col-md-6"><NavLink to="/application">Applications</NavLink></li>
+      <li className="col-md-6"><NavLink to="/users">User Accounts</NavLink></li>
     </ul>
   </header>
 );
