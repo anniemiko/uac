@@ -13,11 +13,11 @@ class ApplicationContainer extends Component {
   componentDidMount(){
     $.ajax({
       type: "GET",
-      dataType: 'jsonp',
+      dataType: 'json',
       url: 'http://universalaccesscontrol20170610103304.azurewebsites.net/api/Applications',
     }).then(response => {
       console.log('response', response);
-      this.setState(response.applications)
+      this.setState({applications: response})
     });
     // axios.get('http://universalaccesscontrol20170610103304.azurewebsites.net/api/Applications').then(response => this.setState(response.applications))
   }
@@ -30,14 +30,18 @@ class ApplicationContainer extends Component {
 }
 
 class Application extends Component {
-  // this.state = {
-  //   applications: [];
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     applications: []
+  //   }
   // }
   componentWillReceiveProps(){
-    console.log('props', this.props);
+    console.log('props', this.props.applications);
   }
-  render(){
+  render(props){
     var appList = this.props.applications.map((application) => {
+      console.log('applications', application)
       return (
         <li className="application" key={application.Id} >
           <h4>{application.ApplicationName}</h4>
@@ -49,7 +53,7 @@ class Application extends Component {
       <div className="main-content">
         <h2>Applications</h2>
         <ul className="group">
-          {this.props.appList}
+          {appList}
         </ul>
       </div>
     )
