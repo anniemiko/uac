@@ -48,3 +48,10 @@ img.App-logo {
     padding: 8px;
     text-align: center;
 }
+
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}

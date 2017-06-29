@@ -29,7 +29,6 @@ class UserContainer extends Component {
 
 class Users extends Component {
   render(props){
-    var userList;
     console.log('props', this.props.users);
     if(this.props.users) {
     var userList = this.props.users.map((user) => {

@@ -10,7 +10,6 @@ class ApplicationContainer extends Component {
     super(props)
     this.state = {
       applications: [],
-      showModal: false
     }
   }
   componentDidMount(){
@@ -24,29 +23,32 @@ class ApplicationContainer extends Component {
     });
     // axios.get('http://universalaccesscontrol20170610103304.azurewebsites.net/api/Applications').then(response => this.setState(response.applications))
   }
-  close(){
-    this.setState({showModal: false });
-  }
-  open(){
-    this.setState({showModal: true });
-  }
   render() {
     console.log('state', this.state.applications);
     return (
-      <Application applications={this.state.applications} showModal={this.state.showModal}/>
+      <Application applications={this.state.applications} />
     )
   }
 }
 
 class Application extends Component {
+  constructor(props){
+    super(props)
+    this.state = { showModal: false };
+  }
+
   render(props){
+    var self = this;
     var appList = this.props.applications.map((application) => {
       console.log('applications', application)
+        console.log('showModal', this.state.showModal)
       return (
         <tr className="application" key={application.Id} >
           <td>{application.ApplicationName}</td>
           <td>{application.ApplicationDesc}</td>
-          <td><Button bsStyle="primary" bsSize="small" onClick={this.open}>Edit</Button></td>
+          <td><Button bsStyle="primary" bsSize="small"
+            onClick={()=>{self.setState({showModal: true })}}
+>Edit</Button></td>
         </tr>
       )
     });
@@ -64,15 +66,15 @@ class Application extends Component {
             {appList}
           </tbody>
         </table>
-        <Modal show={this.props.showModal} onHide={this.close}>
+        <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Manage applications</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <h4>pull content from endpoints</h4>
+              <h4>pull content from endpoint</h4>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
+            <Button onClick={()=>{self.setState({showModal: false })}}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>
