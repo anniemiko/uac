@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { FormGroup } from 'react-bootstrap';
+import {FormControl} from 'react-bootstrap';
+import {ControlLabel} from 'react-bootstrap';
 // import axios from 'axios';
 
 var $ = require('jquery');
@@ -36,9 +39,12 @@ class Application extends Component {
     super(props)
     this.state = { showModal: false };
   }
-
+  handleNameChange(e) {
+    this.setState({name: e.target.value})
+  }
   render(props){
     var self = this;
+    var name = <FormControl onChange={this.handleNameChange} type='text' className="form-control" value={this.state.name}/>
     var appList = this.props.applications.map((application) => {
       console.log('applications', application)
         console.log('showModal', this.state.showModal)
@@ -71,7 +77,13 @@ class Application extends Component {
             <Modal.Title>Manage applications</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <h4>pull content from endpoint</h4>
+              <form>
+                <FormGroup controlId="formBasicText" >
+                  <ControlLabel>Application Name</ControlLabel>
+                  {name}
+                  <ControlLabel>Application Description</ControlLabel>
+                </FormGroup>
+              </form>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={()=>{self.setState({showModal: false })}}>Close</Button>
