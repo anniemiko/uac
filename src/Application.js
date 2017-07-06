@@ -37,17 +37,25 @@ class ApplicationContainer extends Component {
 class Application extends Component {
   constructor(props){
     super(props)
-    this.state = { showModal: false };
+    this.state = {
+      showModal: false,
+      appName: this.props.applications.ApplicationName,
+      description: this.props.applications.ApplicationDesc
+    };
+    console.log("appname", this.props.applications.ApplicationDesc);
   }
   handleNameChange(e) {
-    this.setState({name: e.target.value})
+    this.setState({appName: e.target.value})
+  }
+  handleDescChange(e) {
+    this.setState({description: e.target.value})
   }
   render(props){
     var self = this;
-    var name = <FormControl onChange={this.handleNameChange} type='text' className="form-control" value={this.state.name}/>
+    var name = <FormControl onChange={this.handleNameChange} type='text' className="form-control" value={this.state.appName}/>
+    console.log("appName", this.state.appName);
+    var desc = <FormControl onChange={this.handleDescChange} type='text' className="form-control" value={this.state.description}/>
     var appList = this.props.applications.map((application) => {
-      console.log('applications', application)
-        console.log('showModal', this.state.showModal)
       return (
         <tr className="application" key={application.Id} >
           <td>{application.ApplicationName}</td>
@@ -82,6 +90,7 @@ class Application extends Component {
                   <ControlLabel>Application Name</ControlLabel>
                   {name}
                   <ControlLabel>Application Description</ControlLabel>
+                  {desc}
                 </FormGroup>
               </form>
           </Modal.Body>
